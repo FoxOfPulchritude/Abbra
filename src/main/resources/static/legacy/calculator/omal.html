@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sample Webpage</title>
+		<link href="main.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body>
+		<header>
+            <h1>2016 Candidates&#39; College Plans </h1>
+            <h2>Getting you the right candidate: everytime, all the time.</h2>
+        </header>
+		<ul class="menus">
+			<li class="menu-items">
+				<a href=index.html class="menu-text">Home</a>
+			</li>
+			<li class="menu-items">
+				<a href=clinton.html class="menu-text">Clinton</a>
+			</li>
+			<li class="menu-items">
+				<a href=sanders.html class="menu-text">Sanders</a>
+			</li>
+			<li class="menu-items active">
+				<a href=omal.html class="menu-text">O'Malley</a>
+			</li>
+			<li class="menu-items">
+				<a href=rubio.html class="menu-text">Rubio</a>
+			</li>
+			<li class="menu-items">
+				<a href=christie.html class="menu-text">Christie</a>
+			</li>
+		</ul>
+		<div class="article-element">
+			<h1>His Plan</h1>
+			<p>With his plan, Martin O&#39;Malley promises to provide debt-free access to a college degree for all students within five years. O&#39;Malley&#39;s multi-part plan includes freezing tuition rates at public universities, working with states to ensure legislature invests more in higher education, and lowering tuition rates to no more than 10 percent of the state median income at four year public institutions.  The plan also hopes to lower tuition rates at two-year public institutions to no more than 5 percent of the state median income.  He also wants to increase pell grants and state grants would be increased to accommodate for non-tuition costs. Funding for the federal work study program would be tripled in order to accommodate more students. Last but not least, federal and state government would share the expenses of childcare on campus as well as accommodate parents by encouraging online courses and reducing the amount of time it takes to graduate.</p>
+		</div>
+		<div class="article-element calc">
+			<h1>How much would you save?</h1>
+			<form>
+			<p>Input current tuition:  </p>
+			<input type="number" id=t />
+			<p>What state are you from? </p>
+			<select id=yourstate>
+				
+						<option SELECTED="selected"> Alabama
+						
+						</option><option>Alaska
+</option><option>Arizona
+</option><option>Arkansas
+</option><option>California
+</option><option>Colorado
+</option><option>Connecticut
+</option><option>Delaware
+</option><option>District Of Columbia
+</option><option>Florida
+</option><option>Georgia
+</option><option>Hawaii
+</option><option>Idaho
+</option><option>Illinois
+</option><option>Indiana
+</option><option>Iowa
+</option><option>Kansas
+</option><option>Kentucky
+</option><option>Louisiana
+</option><option>Maine
+</option><option>Maryland
+</option><option>Massachusetts
+</option><option>Michigan
+</option><option>Minnesota
+</option><option>Mississippi
+</option><option>Missouri
+</option><option>Montana
+</option><option>Nebraska
+</option><option>Nevada
+</option><option>New Hampshire
+</option><option>New Jersey
+</option><option>New Mexico
+</option><option>New York
+</option><option>North Carolina
+</option><option>North Dakota
+</option><option>Ohio
+</option><option>Oklahoma
+</option><option>Oregon
+</option><option>Pennsylvania
+</option><option>Rhode Island
+</option><option>South Carolina
+</option><option>South Dakota
+</option><option>Tennessee
+</option><option>Texas
+</option><option>Utah
+</option><option>Vermont
+</option><option>Virginia
+</option><option>Washington
+</option><option>West Virginia
+</option><option>Wisconsin
+</option><option>Wyoming
+						</option>
+			</select>
+			<br><br><br>
+			<input type=button Value="Calculate" onclick=calculateOmalley()>
+			</form>
+			<h3 class="appear" id="result"></h3>
+</div>
+
+
+<script src="calculator.js"></script>		
+</body>

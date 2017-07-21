@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sample Webpage</title>
+		<link href="main.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body>
+		<header>
+            <h1>2016 Candidates&#39; College Plans </h1>
+            <h2>Getting you the right candidate: everytime, all the time.</h2>
+        </header>
+		<ul class="menus">
+			<li class="menu-items">
+				<a href=index.html class="menu-text">Home</a>
+			</li>
+			<li class="menu-items">
+				<a href=clinton.html class="menu-text">Clinton</a>
+			</li>
+			<li class="menu-items">
+				<a href=sanders.html class="menu-text">Sanders</a>
+			</li>
+			<li class="menu-items">
+				<a href=omal.html class="menu-text">O'Malley</a>
+			</li>
+			<li class="menu-items active">
+				<a href=rubio.html class="menu-text">Rubio</a>
+			</li>
+			<li class="menu-items">
+				<a href=christie.html class="menu-text">Christie</a>
+			</li>
+		</ul>
+		<div class="article-element">
+			<h1>His Plan</h1>
+			<p>Rubio wants rich individuals and hedge funds to invest in students&#39; college tuitions.  Investors would pay a student&#39;s entire tuition and then the student would give the investor a small percentage of their annual income for a set period of time.  The example Rubio provided was an investor paying a $10,000 tuition and the student giving the investor four percent of their annual income after college for ten years.  Chris Christie also supports this plan.</p>
+		</div>
+		<div class="article-element calc">
+			<h1>How much would you save?</h1>
+			<form>
+			How much do you pay in tuition?<br>
+			<input type=number id="t">
+			<br><br><br>
+			<input type=button Value="Calculate" onclick=calculateRubio()>
+			</form>
+			<h3 class="appear" id="result"></h3>
+		</div>
+		<div class="article-element">
+			<h1>Noteworthy Info</h1>
+			<p>Rubio is also a supporter of the &quot;Student RIght to Know Before You Go&quot; act.  This act says that a university must provide information to potential students that could affect their choice to go to that school.  The necessary information includes: post-graduation average annual income. Rates of remedial enrollment, credit accumulation, and graduation. Average cost of the program and average debt accumulated.</p>
+		</div>
+		
+<script src=calculator.js></script>	
+</body>
+</html>

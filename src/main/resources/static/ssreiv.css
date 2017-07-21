@@ -1,0 +1,9 @@
+html {
+	background-image: url("res/article.jpg");
+	/*background-color:rgb(255, 213, 124);*/
+}
+
+.hidden {
+	display:none; /*todo switch over to w3 for js TV method*/
+}
+
