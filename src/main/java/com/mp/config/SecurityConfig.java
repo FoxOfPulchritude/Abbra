@@ -12,10 +12,16 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.ldap.DefaultSpringSecurityContextSource;
+import org.springframework.security.ldap.userdetails.LdapUserDetailsManager;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -24,8 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+        	.csrf()
+        		.disable()
             .authorizeRequests()
-                .antMatchers("/", "/login**").permitAll()
+                .antMatchers("/", "/login**", "/res/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -33,45 +41,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .defaultSuccessUrl("/", true)
                 .permitAll()
                 .and()
+            .rememberMe()
+            	.tokenRepository(persistentTokenRepository())
+            	.tokenValiditySeconds(86400)
+            	.and()
             .logout()
+            	.logoutSuccessUrl("/?logout")
                 .permitAll();
     }
 	
-	public void configure(WebSecurity web) throws Exception{
-		web
-			.ignoring().antMatchers("/resources/**");
-	}
-	/*
-	
-	@Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.ldapAuthentication().userSearchBase("ou=people").userSearchFilter("(uid={0})").groupSearchBase("ou=groups").groupSearchFilter("(member={0})").contextSource().root("dc=baeldung,dc=com").ldif("classpath:users.ldif");
-    }
-	
-	@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/home").permitAll().anyRequest().authenticated();
-        http.formLogin().loginPage("/login").permitAll().and().logout().logoutSuccessUrl("/");
-    }
-	
-	*/
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 			.ldapAuthentication()
-				.userDnPatterns("uid={0},ou=people")
+				.userSearchBase("ou=people")
+				.userSearchFilter("(uid={0})")
 				.groupSearchBase("ou=groups")
-				.contextSource(contextSource())
-				.passwordCompare()
-					.passwordEncoder(new LdapShaPasswordEncoder())
-					.passwordAttribute("userPassword");
-	}
-	
-	@Bean
-	public DefaultSpringSecurityContextSource contextSource() {
-		DefaultSpringSecurityContextSource contextSource = new DefaultSpringSecurityContextSource(Arrays.asList("ldap://localhost:8389/"), "dc=springframework,dc=org");
-		contextSource.afterPropertiesSet();
-		return contextSource;
+				.groupSearchFilter("member={0}")
+			.contextSource()
+				.root("dc=baeldung,dc=com")
+				.ldif("classpath:test-server.ldif");
 	}
 
+	
+	 @Bean
+	 public PersistentTokenRepository persistentTokenRepository() {
+		 InMemoryTokenRepositoryImpl tokenRepositoryImpl = new InMemoryTokenRepositoryImpl();
+		 return tokenRepositoryImpl;
+	 }
 }

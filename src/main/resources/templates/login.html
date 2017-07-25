@@ -9,10 +9,13 @@
 		<script th:src="@{//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}" data-integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" data-crossorigin="anonymous"></script>
 		<link href="ssreiv.css" type="text/css" rel="stylesheet" />
 		<link rel="shortcut icon" type="image/x-icon" href="res/logomin.png" />
-		<style>body { padding-top: 70px; }</style>
 <meta charset="ISO-8859-1" />
 </head>
 <body>
-	<div th:replace="navigation :: #logon" class="show"></div>
+	<div th:replace="navigation :: #logon"></div>
+	<script>
+		$('#logon').modal('show');
+		$('.close').hide();
+	</script>
 </body>
 </html>

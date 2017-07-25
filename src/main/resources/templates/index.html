@@ -3,12 +3,14 @@
 	<head>
 		<title>Abbra</title>
 		<!--<link href="main.css" type="text/css" rel="stylesheet" />-->
+		<script src="http://malsup.github.com/jquery.form.js"></script>
+		<script th:src="@{eng1.js}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link th:href="@{//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" data-integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" data-crossorigin="anonymous" />
 		<script th:src="@{//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}" data-integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" data-crossorigin="anonymous"></script>
 		<link href="ssreiv.css" type="text/css" rel="stylesheet" />
-		<link rel="shortcut icon" type="image/x-icon" href="res/logomin.png" />
+		<link rel="shortcut icon" type="image/x-icon" href="/resources/res/logomin.png" />
 		<style>body { padding-top: 70px; }</style>
 	</head>
 	<body>
@@ -20,9 +22,18 @@
 		<div th:replace="navigation :: article"></div>
 		<div th:replace="navigation :: article"></div>
 		<div th:replace="navigation :: article"></div>
+		<div th:replace="navigation :: message"></div>
+		<div th:replace="navigation :: foot"></div>
 		<!-- content starts here -->
 		
 	</div>
+	
+	<!-- scripts till i can move them -->
+	<script>
+		$(window.setTimeout(function() {
+			$("#logout-success").slideUp('slow');
+		}, 3000));
+	</script>
 	</body>
 
 <!-- Magic Wand graphic by <a href="http://www.flaticon.com/authors/freepik">freepik</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Check out the new logo that I created on <a href="http://logomakr.com" title="Logo Maker">LogoMaker.com</a> https://logomakr.com/18Moge18Moge -->
